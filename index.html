@@ -1,0 +1,159 @@
+<html><head><base href="." />
+<meta charset="UTF-8">
+<title>🌟 Welcome to BEANS THOUGHTS 🌟</title>
+<style>
+body {
+    background: linear-gradient(45deg, #ff69b4, #4169e1);
+    font-family: "Comic Sans MS", cursive;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+    animation: rainbow 3s infinite;
+}
+
+@keyframes rainbow {
+    0% { background: linear-gradient(45deg, #ff69b4, #4169e1); }
+    50% { background: linear-gradient(45deg, #4169e1, #ff69b4); }
+    100% { background: linear-gradient(45deg, #ff69b4, #4169e1); }
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bean {
+    font-size: 100px;
+    animation: spin 3s linear infinite;
+    display: inline-block;
+    cursor: pointer;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.thought {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+.counter {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+button {
+    font-size: 24px;
+    padding: 10px 20px;
+    background: #ff00ff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-family: "Comic Sans MS", cursive;
+    margin: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.visitor-counter {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #ff00ff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+marquee {
+    font-size: 24px;
+    color: yellow;
+    background: rgba(0,0,0,0.3);
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>🌟 WELCOME TO BEANS THOUGHTS 🌟</h1>
+    <div class="bean" onclick="rotateBeans()">🫘</div>
+    
+    <marquee scrollamount="10">WARNING: THIS WEBSITE CONTAINS 100% REAL BEAN THOUGHTS - PROCEED WITH CAUTION!!!</marquee>
+    
+    <div class="thought" id="beanThought">Loading bean wisdom...</div>
+    
+    <button onclick="generateThought()">GENERATE NEW BEAN THOUGHT</button>
+    <button onclick="makeEverythingWorse()">MAKE IT WORSE</button>
+    
+    <div class="counter">Beans contemplated: <span id="beanCounter">0</span></div>
+    
+    <div class="visitor-counter">
+        Visitors: <span id="visitorCount">42069</span>
+    </div>
+</div>
+
+<script>
+const thoughts = [
+    "what if beans... were actually tiny alien eggs? 🤔",
+    "beans are just nature's edible rocks",
+    "if you stack beans high enough, do they reach heaven?",
+    "what if we're all just beans in a giant cosmic can?",
+    "beans don't think about you as much as you think about beans",
+    "what if clouds are just sky beans?",
+    "beeeeeeeeeeeeeeans",
+    "has anyone ever counted all the beans?",
+    "beans beans the magical fruit, the more you eat the more you [REDACTED]"
+];
+
+let beanCount = 0;
+let rotationDegree = 0;
+
+function generateThought() {
+    const thoughtElement = document.getElementById('beanThought');
+    thoughtElement.innerText = thoughts[Math.floor(Math.random() * thoughts.length)];
+    beanCount++;
+    document.getElementById('beanCounter').innerText = beanCount;
+    
+    // Add more emojis because why not
+    thoughtElement.innerHTML += " 🫘✨🌟";
+}
+
+function makeEverythingWorse() {
+    document.body.style.fontFamily = "Comic Sans MS, cursive";
+    document.body.style.transform = `rotate(${Math.random() * 5}deg)`;
+    const newColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    document.body.style.backgroundColor = newColor;
+    
+    // Add more marquees because why not
+    const newMarquee = document.createElement('marquee');
+    newMarquee.innerHTML = "🫘 BEANS 🫘 BEANS 🫘 BEANS 🫘";
+    document.body.appendChild(newMarquee);
+}
+
+function rotateBeans() {
+    rotationDegree += 360;
+    const bean = document.querySelector('.bean');
+    bean.style.transform = `rotate(${rotationDegree}deg)`;
+}
+
+// Start with a random thought
+generateThought();
+
+// Make visitor counter go up randomly
+setInterval(() => {
+    const visitorCount = document.getElementById('visitorCount');
+    visitorCount.innerText = parseInt(visitorCount.innerText) + Math.floor(Math.random() * 10);
+}, 3000);
+</script>
+</body></html>
